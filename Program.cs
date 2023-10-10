@@ -10,7 +10,7 @@ class Program
 {
     public static void Main()
     {
-        Console.SetWindowSize(74, 35);
+        Console.SetWindowSize(74, 38);
         Console.WriteLine("**************************************************************************");
         Console.WriteLine("** Нажмите номер соответствующий алгоритму который вы хотите выполнить: **");
         Console.WriteLine("**                                                                      **");
@@ -20,7 +20,9 @@ class Program
         Console.WriteLine("**                                                                      **");
         Console.WriteLine("** 3. Произведение элементов                                            **");
         Console.WriteLine("**                                                                      **");
-        Console.WriteLine("** 4. Метод Горнера                                                     **");
+        Console.WriteLine("** 4.1 Метод Горнера                                                    **");
+        Console.WriteLine("**                                                                      **");
+        Console.WriteLine("** 4.2 Решение задачи 4 прямым вычислением                              **");
         Console.WriteLine("**                                                                      **");
         Console.WriteLine("** 5. Bubblesort                                                        **");
         Console.WriteLine("**                                                                      **");
@@ -66,6 +68,7 @@ class Program
             goto startInput;
         }
         Console.Clear();
+        Console.SetWindowSize(74, 11);
         Console.WriteLine("**************************************************************************");
         Algorithm algChosen = new();
         switch (algSwitch)
@@ -82,9 +85,13 @@ class Program
                 algChosen = new Alg3();
                 Console.WriteLine("** 3. Произведение элементов                                            **");
                 break;
-            case 4://horner
+            case 4.1f://horner
                 algChosen = new Horner();
-                Console.WriteLine("** 4. Метод Горнера                                                     **");
+                Console.WriteLine("** 4,1. Метод Горнера                                                    **");
+                break;
+            case 4.2f://silly4
+                algChosen = new SillyTask4();
+                Console.WriteLine("** 4,2. Решение задачи 4 прямым вычислением                              **");
                 break;
             case 5://bubble
                 algChosen = new BubbleSort();
@@ -100,19 +107,19 @@ class Program
                 break;
             case 8.1f://pow
                    algChosen = new ClassicPow();
-                Console.WriteLine("** 8.1 Классический алгоритм возведения в степень                       **");
+                Console.WriteLine("** 8,1. Классический алгоритм возведения в степень                       **");
                 break;
             case 8.2f://pow
                 algChosen = new RecPow();
-                Console.WriteLine("** 8.2 Алгоритм возведения в степень с помощью рекурсии                 **");
+                Console.WriteLine("** 8,2. Алгоритм возведения в степень с помощью рекурсии                 **");
                 break;
             case 8.3f://pow
                 algChosen = new QuickPow();
-                Console.WriteLine("** 8.3 Быстрый алгоритм возведения в степень                            **");
+                Console.WriteLine("** 8,3. Быстрый алгоритм возведения в степень                            **");
                 break;
             case 8.4f://pow
                 algChosen = new QuickPow2();
-                Console.WriteLine("** 8.4 Классический быстрый алгоритм возведения в степень               **");
+                Console.WriteLine("** 8,4. Классический быстрый алгоритм возведения в степень               **");
                 break;
             case 9://matrix
                 algChosen = new MatrixMultiplication();
@@ -146,37 +153,21 @@ class Program
         //
         double[,] timeVector = new double[sHowManyTests, n];
         for (int howManyTests = sHowManyTests; howManyTests != 0; howManyTests--)
-        {
             for (int vectorSize = 1; vectorSize <= n; vectorSize++)
-            {
                 timeVector[howManyTests-1,vectorSize-1] = algChosen.Start(vectorSize);
-            }
-        }
-
-        for (int howManyTests = sHowManyTests; howManyTests != 0; howManyTests--)
-        {
-            for (int vectorSize = 1; vectorSize <= n; vectorSize++)
-            {
-                Console.WriteLine(timeVector[howManyTests - 1, vectorSize - 1]);
-            }
-        }
 
         double[] timeApprox = new double[n];
         for (int i = 0; i < n; i++)
         {
             double sum = 0;
             for (int iterHMT = 0; iterHMT < sHowManyTests; iterHMT++)
-            {
                 sum += timeVector[iterHMT, i];
-            }
             timeApprox[i] = sum / sHowManyTests;
         }
         StreamWriter sw = new StreamWriter("test.txt");
         foreach (double i in timeApprox)
-        {
             sw.WriteLine(i);
-        }
         sw.Close();
-        //System.Diagnostics.Process.Start("aboba.txt"); //ПРОВЕРИТЬ ЭТУ ШТУКУ ЭТО ОТКРЫТИЕ ФАЙЛА В БЛОКНОТЕ
+        Process.Start("notepad.exe", "test.txt"); //ПРОВЕРИТЬ ЭТУ ШТУКУ ЭТО ОТКРЫТИЕ ФАЙЛА В БЛОКНОТЕ
     }
 }

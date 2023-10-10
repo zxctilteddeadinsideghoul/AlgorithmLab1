@@ -1,23 +1,19 @@
-﻿using System;
+﻿using AlgoritmLab1.algorithms.templates;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AlgoritmLab1.algorithms.templates;
 
 namespace AlgoritmLab1.algorithms
 {
-    internal class Horner : Algorithm
+    internal class SillyTask4 : Algorithm
     {
         protected override void DoAlg(long[] vector)
         {
-            double polynomial = 0;
+            double sum = 0;
             for (int i = vector.Length - 1; i > 0; i--)
-            {
-                polynomial *= 1.5;
-                polynomial = vector[i - 1] + polynomial;
-            }
+                sum += 1.5 * Math.Pow(vector[i], i - 1);
         }
     }
 }

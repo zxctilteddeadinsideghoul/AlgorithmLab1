@@ -25,9 +25,11 @@ namespace AlgoritmLab1.algorithms
         {
             long[,] matrixA = GetInput.MatrixInput(n);
             long[,] matrixB = GetInput.MatrixInput(n);
-            Timer.StartTimer();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             DoAlg(matrixA, matrixB);
-            return Timer.StopTimer();
+            stopwatch.Stop();
+            return stopwatch.ElapsedTicks / 10000000.0d;
         }
     }
 }
