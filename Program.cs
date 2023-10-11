@@ -10,7 +10,8 @@ class Program
 {
     public static void Main()
     {
-        Console.SetWindowSize(74, 38);
+        startInput:
+        Console.SetWindowSize(74, 45);
         Console.WriteLine("**************************************************************************");
         Console.WriteLine("** Нажмите номер соответствующий алгоритму который вы хотите выполнить: **");
         Console.WriteLine("**                                                                      **");
@@ -44,25 +45,21 @@ class Program
         Console.WriteLine("**                                                                      **");
         Console.WriteLine("** 11. Introsort                                                        **");
         Console.WriteLine("**                                                                      **");
+        Console.WriteLine("** 12. Combsort                                                         **");
+        Console.WriteLine("**                                                                      **");
         Console.WriteLine("**************************************************************************");
-        startInput:
+        
         Console.WriteLine("**                                                                      **");
         Console.Write("** Ваш выбор: ");
         bool success = float.TryParse(Console.ReadLine(), out float algSwitch);
         Console.WriteLine("**                                                                      **");
         Console.WriteLine("**************************************************************************");
-        if(!success)
+        Console.Clear();
+        if (!success)
         {
+            Console.WriteLine("**************************************************************************");
             Console.WriteLine("**                                                                      **");
             Console.WriteLine("** Вы ничего не ввели или ввели букву. Попробуйте снова.                **");
-            Console.WriteLine("**                                                                      **");
-            Console.WriteLine("**************************************************************************");
-            goto startInput;
-        }
-        else if (algSwitch > 11 || algSwitch < 1)
-        {
-            Console.WriteLine("**                                                                      **");
-            Console.WriteLine("** Вы ввели несуществующий номер. Попробуйте снова.                     **");
             Console.WriteLine("**                                                                      **");
             Console.WriteLine("**************************************************************************");
             goto startInput;
@@ -133,6 +130,17 @@ class Program
                     algChosen = new IntroSort();
                 Console.WriteLine("** 11. Introsort                                                        **");
                 break;
+            case 12://Comb
+                algChosen = new CombSort();
+                Console.WriteLine("** 12. Combsort                                                         **");
+                break;
+            default:
+                Console.WriteLine("**                                                                      **");
+                Console.WriteLine("** Вы ввели несуществующий номер. Попробуйте снова.                     **");
+                Console.WriteLine("**                                                                      **");
+                Console.WriteLine("**************************************************************************");
+                goto startInput;
+                break;
         }
         
         Console.WriteLine("**************************************************************************");
@@ -162,13 +170,17 @@ class Program
             timeApprox[i] = sum / sHowManyTests;
         }
         //вывод
-        string outputFile = algChosen.GetType().Name + "/"+ Convert.ToString(DateTime.Now).Replace(':','.')+" n = "+n+" attempts = "+sHowManyTests+".txt";
+        string outputFile = algChosen.GetType().Name + "/"+ algChosen.GetType().Name+" " + Convert.ToString(DateTime.Now).Replace(':','.')+" n("+n+") att("+sHowManyTests+").txt";
         Process.Start("cmd", "/C IF NOT EXIST "+ algChosen.GetType().Name+" md "+ algChosen.GetType().Name);
-        StreamWriter sw = new StreamWriter(outputFile);
+        Thread.Sleep(1000);
+        StreamWriter sw = File.CreateText(outputFile);
+        StreamWriter sw2 = File.CreateText(algChosen.GetType().Name + " " + Convert.ToString(DateTime.Now).Replace(':', '.') + " n(" + n + ") att(" + sHowManyTests + ").txt");
         foreach (double i in timeApprox)
+        {
             sw.WriteLine(i);
+            sw2.WriteLine(i);
+        }
         sw.Close();
-        Console.WriteLine();
         Process.Start("notepad.exe", outputFile);
     }
 }
