@@ -17,8 +17,8 @@ namespace AlgoritmLab1
         public static long[] VectorInput(int n)
         {
             
-            long[] vector = new long[n]; //массив подопытный
-            for (int i = 0; i < vector.Length; i++)//заполнение подопытного
+            long[] vector = new long[n];
+            for (int i = 0; i < vector.Length; i++)
                 vector[i] = rand.Next();
             return vector;
         }

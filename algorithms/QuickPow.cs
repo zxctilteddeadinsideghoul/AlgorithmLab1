@@ -8,7 +8,7 @@ using AlgoritmLab1.algorithms.templates;
 
 namespace AlgoritmLab1.algorithms
 {
-    internal class QuickPow : PowAlg//quickpow
+    internal class QuickPow : PowAlg
     {
 
 

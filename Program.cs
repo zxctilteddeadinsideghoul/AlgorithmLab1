@@ -59,7 +59,7 @@ class Program
             Console.WriteLine("**************************************************************************");
             goto startInput;
         }
-        else if (algSwitch > 11 || algSwitch < 1)//менять если больше алг
+        else if (algSwitch > 11 || algSwitch < 1)
         {
             Console.WriteLine("**                                                                      **");
             Console.WriteLine("** Вы ввели несуществующий номер. Попробуйте снова.                     **");
@@ -135,7 +135,6 @@ class Program
                 break;
         }
         
-        
         Console.WriteLine("**************************************************************************");
         Console.WriteLine("**                                                                      **");
         Console.Write("** Введите n: ");
@@ -143,19 +142,17 @@ class Program
         Console.WriteLine("**                                                                      **");
         Console.WriteLine("**************************************************************************");
 
-        //
         Console.WriteLine("**                                                                      **");
         Console.Write("** Введите количество тестов для подсчета среднего значения: ");
         int sHowManyTests = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("**                                                                      **");
         Console.WriteLine("**************************************************************************");
-        
-        //
+        //тесты
         double[,] timeVector = new double[sHowManyTests, n];
         for (int howManyTests = sHowManyTests; howManyTests != 0; howManyTests--)
             for (int vectorSize = 1; vectorSize <= n; vectorSize++)
                 timeVector[howManyTests-1,vectorSize-1] = algChosen.Start(vectorSize);
-
+        //среднее время
         double[] timeApprox = new double[n];
         for (int i = 0; i < n; i++)
         {
@@ -164,10 +161,14 @@ class Program
                 sum += timeVector[iterHMT, i];
             timeApprox[i] = sum / sHowManyTests;
         }
-        StreamWriter sw = new StreamWriter("test.txt");
+        //вывод
+        string outputFile = algChosen.GetType().Name + "/"+ Convert.ToString(DateTime.Now).Replace(':','.')+" n = "+n+" attempts = "+sHowManyTests+".txt";
+        Process.Start("cmd", "/C IF NOT EXIST "+ algChosen.GetType().Name+" md "+ algChosen.GetType().Name);
+        StreamWriter sw = new StreamWriter(outputFile);
         foreach (double i in timeApprox)
             sw.WriteLine(i);
         sw.Close();
-        Process.Start("notepad.exe", "test.txt"); //ПРОВЕРИТЬ ЭТУ ШТУКУ ЭТО ОТКРЫТИЕ ФАЙЛА В БЛОКНОТЕ
+        Console.WriteLine();
+        Process.Start("notepad.exe", outputFile);
     }
 }
