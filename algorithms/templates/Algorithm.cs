@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 namespace AlgoritmLab1.algorithms.templates
 {
     internal class Algorithm
-    {
-        public static Stopwatch stopwatch = new Stopwatch();
+    { 
         public virtual double Start(int n)
         {
             long[] vector = GetInput.VectorInput(n);
-            Timer.StartTimer();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             DoAlg(vector);
-            return Timer.StopTimer();
+            stopwatch.Stop();
+            return stopwatch.ElapsedTicks / 10000000.0d;
         }
         protected virtual void DoAlg(long[] vector) { }
         protected virtual void DoAlg(long[,] matrixA, long[,] matrixB) { }

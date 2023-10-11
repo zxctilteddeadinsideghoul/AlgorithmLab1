@@ -12,14 +12,14 @@ namespace AlgoritmLab1
 
         public static int numberInput()
         {
-            return rand.Next(0, 50000);
+            return rand.Next();
         }
         public static long[] VectorInput(int n)
         {
             
-            long[] vector = new long[n]; //массив подопытный
-            for (int i = 0; i < vector.Length; i++)//заполнение подопытного
-                vector[i] = rand.Next(0, 50000);
+            long[] vector = new long[n];
+            for (int i = 0; i < vector.Length; i++)
+                vector[i] = rand.Next();
             return vector;
         }
         public static long[,] MatrixInput(int n)

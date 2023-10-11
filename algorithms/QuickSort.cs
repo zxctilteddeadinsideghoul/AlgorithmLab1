@@ -54,7 +54,7 @@ namespace AlgoritmLab1.algorithms
         }
         protected override void DoAlg(long[] vector)
         {
-            QuickSortAlg(vector, 0, vector.Length - 1);//returns array
+            QuickSortAlg(vector, 0, vector.Length - 1);
         }
     }
 
