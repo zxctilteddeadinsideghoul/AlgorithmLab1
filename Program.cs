@@ -181,6 +181,7 @@ class Program
             sw2.WriteLine(i);
         }
         sw.Close();
+        sw2.Close();
         Process.Start("notepad.exe", outputFile);
     }
 }
