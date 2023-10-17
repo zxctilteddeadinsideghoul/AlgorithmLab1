@@ -12,7 +12,7 @@ namespace AlgoritmLab1.algorithms
     {
         protected override void DoAlg(long[] vector)
         {
-            int toFixGap = vector.Length - 1;
+            int toFixGap = vector.Length;
             for (int gap = Convert.ToInt32(vector.Length - 1); gap > 1; gap = Convert.ToInt32(Math.Round(gap / 1.2473309d)))
             {
                 //чтобы gap не повторялся
