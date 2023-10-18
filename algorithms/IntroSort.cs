@@ -25,6 +25,7 @@ namespace AlgoritmLab1.algorithms
             {
                 QuickSortRecursive(ref data, 0, data.Length - 1);
             }
+
         }
 
         private static void InsertionSort(ref long[] data)

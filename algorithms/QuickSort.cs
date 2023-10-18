@@ -14,14 +14,6 @@ namespace AlgoritmLab1.algorithms
     internal class QuickSort : Algorithm
     {
 
-        //метод для обмена элементов массива
-        static void Swap(ref long x, ref long y)
-        {
-            var t = x;
-            x = y;
-            y = t;
-        }
-
         //метод возвращающий индекс опорного элемента
         static int Partition(long[] array, int minIndex, int maxIndex)
         {
@@ -31,12 +23,12 @@ namespace AlgoritmLab1.algorithms
                 if (array[i] < array[maxIndex])
                 {
                     pivot++;
-                    Swap(ref array[pivot], ref array[i]);
+                    (array[pivot], array[i]) = (array[i], array[pivot]);
                 }
             }
 
             pivot++;
-            Swap(ref array[pivot], ref array[maxIndex]);
+            (array[pivot], array[maxIndex]) = (array[maxIndex], array[pivot]);
             return pivot;
         }
 
