@@ -12,7 +12,7 @@ namespace AlgoritmLab1.algorithms
     {
         protected override void DoAlg(long[] vector)
         {
-            long composition = 0;
+            long composition = 1;
             for (int i = 0; i < vector.Length; i++)
                 composition *= vector[i];
         }
