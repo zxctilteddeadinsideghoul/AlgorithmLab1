@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace AlgoritmLab1.algorithms.templates
 {
-    internal class PowAlg : Algorithm
+    internal abstract class PowAlg : Testing
     {
-        protected static long c = 0;
-        protected static long k = 0;
-        protected static long f = 0;
-        protected static double count = 0;
-        public override double Start(int n)
+        static Random rand = new Random();
+
+        protected override object GetData(uint n)
         {
-            DoAlg((long)GetInput.numberInput(), (long)n);
-            return count;
+            //тут я возвращаю массив из двух элементов в порядке: [0] - число для возведения в степень [1] - степень
+            return new uint[2] { (uint)rand.Next(), n };
         }
-        protected virtual long DoAlg(long x, long n) { return 0; }
     }
 }
