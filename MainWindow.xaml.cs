@@ -20,8 +20,6 @@ namespace AlgorithmLab1
         public MainWindow()
         {
             InitializeComponent();
-            QuickPow quickPow = new QuickPow();
-            quickPow.StartTesting(2, 3);
         }
     }
 }
