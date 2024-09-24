@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AlgoritmLab1.algorithms.powAlgs;
 
 namespace AlgorithmLab1
 {
@@ -19,6 +20,8 @@ namespace AlgorithmLab1
         public MainWindow()
         {
             InitializeComponent();
+            QuickPow quickPow = new QuickPow();
+            quickPow.StartTesting(2, 3);
         }
     }
 }

@@ -41,5 +41,7 @@ namespace AlgoritmLab1.algorithms.powAlgs
             Pow(x, n);
             
         }
+        
+        
     }
 }

@@ -35,7 +35,7 @@ namespace AlgoritmLab1.algorithms.templates
                     stopwatch.Stop();
 
                     //записать результат
-                    allTests[precision, dataSize] = stopwatch.ElapsedTicks / 10000000.0d;
+                    //allTests[precision, dataSize] = stopwatch.ElapsedTicks / 10000000.0d;
 
                 }
 
