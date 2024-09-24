@@ -13,7 +13,7 @@ namespace AlgoritmLab1.algorithms.templates
         protected override object GetData(uint n)
         {
             //тут я возвращаю массив из двух элементов в порядке: [0] - число для возведения в степень [1] - степень
-            return new uint[2] { (uint)rand.Next(), n };
+            return new uint[2] { (uint)rand.Next(100), n };
         }
     }
 }
