@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Animation;
 using AlgoritmLab1.algorithms.templates;
 
 namespace AlgoritmLab1.algorithms.powAlgs
@@ -32,6 +33,7 @@ namespace AlgoritmLab1.algorithms.powAlgs
             }
             while (true)
             {
+                this.steps += 1;
                 k = k / 2;
                 c *= c;
                 if (k % 2 == 1)

@@ -10,6 +10,13 @@ namespace AlgoritmLab1.algorithms.templates
     {
         static Random rand = new Random();
 
+        protected int steps = 0;
+
+        public int GetStepsCount()
+        {
+            return this.steps;
+        }
+
         protected override object GetData(uint n)
         {
             //тут я возвращаю массив из двух элементов в порядке: [0] - число для возведения в степень [1] - степень

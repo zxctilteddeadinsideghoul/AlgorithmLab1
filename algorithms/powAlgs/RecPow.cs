@@ -14,6 +14,8 @@ namespace AlgoritmLab1.algorithms.powAlgs
         {
             uint f;
 
+            this.steps += 1;
+
             if (n == 0) 
             {
                 f = 1;

@@ -21,6 +21,7 @@ namespace AlgoritmLab1.algorithms.powAlgs
             int k = 0;
             while (k < n)
             {
+                this.steps += 1;
                 f *= k;
                 k++;
             }
