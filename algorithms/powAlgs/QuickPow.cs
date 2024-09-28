@@ -46,9 +46,6 @@ namespace AlgoritmLab1.algorithms.powAlgs
 
 
             }
-            MessageBox.Show("!" + x.ToString());
-            MessageBox.Show(n.ToString());
-            MessageBox.Show(f.ToString());
         }
     }
 }

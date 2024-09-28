@@ -8,7 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using AlgoritmLab1.algorithms.powAlgs;
+using AlgoritmLab1.algorithms.algorithms;
 
 namespace AlgorithmLab1
 {
@@ -20,6 +20,8 @@ namespace AlgorithmLab1
         public MainWindow()
         {
             InitializeComponent();
+            MergeSort mergeSort = new MergeSort();
+            mergeSort.StartTesting(200, 1);
         }
     }
 }

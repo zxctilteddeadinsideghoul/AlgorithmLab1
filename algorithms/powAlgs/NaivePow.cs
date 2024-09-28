@@ -24,7 +24,7 @@ namespace AlgoritmLab1.algorithms.powAlgs
                 f *= k;
                 k++;
             }
-            
+
         }
     }
 }
