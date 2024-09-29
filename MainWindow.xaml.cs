@@ -20,8 +20,6 @@ namespace AlgorithmLab1
         public MainWindow()
         {
             InitializeComponent();
-            MergeSort mergeSort = new MergeSort();
-            mergeSort.StartTesting(200, 1);
         }
     }
 }
